@@ -3,181 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>San Vitale - Wellness Studio</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{font-family:"Inter",sans-serif;color:#314235;background:#fff}
-    :root{--green:#0f5a2a;--green2:#2e8b43;--soft:#f4faf6;--text:#33443a}
-
-    header{
-      height:82px;background:#fff;display:flex;align-items:center;justify-content:space-between;
-      padding:0 8%;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(0,0,0,.08)
-    }
-
-    .logo{display:flex;align-items:center;gap:10px;color:var(--green)}
-    .logo-icon{font-size:38px}
-    .logo h1{font-family:"Playfair Display",serif;font-size:33px;line-height:28px}
-    .logo span{font-size:11px;letter-spacing:1.5px;font-weight:700}
-
-    nav{display:flex;align-items:center;gap:28px}
-    nav a{text-decoration:none;color:#333;font-weight:600;font-size:14px;position:relative}
-    nav a.active,nav a:hover{color:var(--green)}
-    nav a.active::after{content:"";width:100%;height:2px;background:var(--green);position:absolute;bottom:-8px;left:0}
-
-    .btn{
-      background:var(--green);color:#fff;border:none;border-radius:8px;padding:15px 24px;
-      font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:.3s
-    }
-    .btn:hover{background:#0a441f;transform:translateY(-2px)}
-    .menu{display:none;font-size:28px;color:var(--green);cursor:pointer}
-
-    .hero{
-      min-height:430px;background:
-      linear-gradient(90deg,rgba(4,35,14,.90),rgba(10,60,25,.58),rgba(255,255,255,.05)),
-      url("https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1600&q=80");
-      background-size:cover;background-position:center;display:flex;align-items:center;padding:70px 8%;position:relative;overflow:hidden
-    }
-    .hero-content{max-width:650px;color:#fff;position:relative;z-index:2}
-    .hero h2{font-family:"Playfair Display",serif;font-size:54px;line-height:1.05;margin-bottom:8px}
-    .hero h3{font-family:"Playfair Display",serif;font-size:34px;color:#62bd55;margin-bottom:22px}
-    .hero p{font-size:16px;line-height:1.8;max-width:540px;font-weight:500}
-    .hero-tags{display:flex;gap:18px;flex-wrap:wrap;margin:25px 0 30px}
-    .tag{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700}
-    .tag i{width:34px;height:34px;background:#55b94d;display:grid;place-items:center;border-radius:50%;font-style:normal}
-
-    section{padding:35px 8%}
-    .title{text-align:center;margin-bottom:28px}
-    .title h2{font-family:"Playfair Display",serif;font-size:32px;color:var(--green);position:relative;display:inline-block}
-    .title h2::before,.title h2::after{content:"";width:80px;height:2px;background:#7ab98a;position:absolute;top:50%}
-    .title h2::before{right:105%}
-    .title h2::after{left:105%}
-    .title p{margin-top:9px;color:#7a867e;font-size:15px}
-
-    .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
-    .card{
-      background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 3px 14px rgba(0,0,0,.13);
-      position:relative;transition:.3s
-    }
-    .card:hover{transform:translateY(-6px)}
-    .card img{width:100%;height:120px;object-fit:cover;display:block}
-    .card-icon{
-      width:48px;height:48px;background:var(--green2);color:#fff;display:grid;place-items:center;border-radius:50%;
-      position:absolute;top:96px;left:50%;transform:translateX(-50%);border:3px solid #fff;font-size:20px
-    }
-    .card-body{padding:36px 18px 16px;text-align:center}
-    .card h3{color:var(--green);font-family:"Playfair Display",serif;font-size:19px;margin-bottom:8px}
-    .card p{color:#68756d;font-size:14px;line-height:1.45;min-height:62px}
-    .card-footer{display:flex;justify-content:space-between;padding:15px 18px 18px;color:var(--green);font-weight:700;font-size:13px}
-
-    .filter-area{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:25px}
-    .filter-area button{
-      border:1px solid #b7d4bf;background:#fff;color:var(--green);font-weight:700;
-      padding:10px 15px;border-radius:50px;cursor:pointer
-    }
-    .filter-area button:hover,.filter-area button.active{background:var(--green);color:#fff}
-
-    .booking{background:var(--soft)}
-    .booking-box{
-      background:#fff;box-shadow:0 5px 22px rgba(0,0,0,.08);padding:18px;border-radius:8px;
-      display:grid;grid-template-columns:repeat(4,1fr) auto;gap:18px;align-items:end
-    }
-    label{font-size:13px;color:#7a827a;font-weight:700;display:block;margin-bottom:8px}
-    select,input{width:100%;padding:15px;border:1px solid #dde5df;border-radius:6px;font-family:inherit;color:#6d756f}
-
-    .info-box{
-      margin-top:20px;background:#fff;border-left:5px solid var(--green);padding:18px;border-radius:8px;
-      box-shadow:0 4px 15px rgba(0,0,0,.06);font-size:14px;color:#58665c;line-height:1.7
-    }
-
-    .benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
-    .benefit{display:flex;gap:14px;align-items:flex-start}
-    .benefit .ico{
-      width:48px;height:48px;border:2px solid #9bc9a7;border-radius:50%;display:grid;place-items:center;
-      color:var(--green2);font-size:22px;flex-shrink:0
-    }
-    .benefit h3{color:var(--green);font-family:"Playfair Display",serif;font-size:18px;margin-bottom:4px}
-    .benefit p{color:#68756d;font-size:13px;line-height:1.45}
-
-    .about{display:grid;grid-template-columns:1fr 1fr;gap:42px;align-items:center}
-    .about img{width:100%;height:310px;object-fit:cover;border-radius:7px;box-shadow:0 4px 16px rgba(0,0,0,.16)}
-    .about h2{color:var(--green);font-family:"Playfair Display",serif;font-size:32px;margin-bottom:12px}
-    .about p{color:#66736b;font-size:15px;line-height:1.75;margin-bottom:20px}
-    .about-icons{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
-    .about-icons div{display:flex;gap:8px;align-items:center;color:var(--green);font-weight:700;font-size:13px}
-    .about-icons span{width:38px;height:38px;border:2px solid #9bc9a7;border-radius:50%;display:grid;place-items:center;font-size:18px}
-
-    .prices{background:#f8fbf8}
-    .price-table{overflow-x:auto;background:#fff;border-radius:10px;box-shadow:0 3px 14px rgba(0,0,0,.08)}
-    table{width:100%;border-collapse:collapse;min-width:720px}
-    th{background:var(--green);color:#fff;text-align:left;padding:15px;font-size:14px}
-    td{padding:14px 15px;border-bottom:1px solid #e8eee9;color:#59665d;font-size:14px}
-    td strong{color:var(--green)}
-
-    .testimonials{background:#fff;border-top:1px solid #e1e9e3}
-    .testimonial-box{
-      max-width:700px;margin:auto;background:#fff;padding:25px 35px;border-radius:8px;text-align:center;
-      box-shadow:0 3px 12px rgba(0,0,0,.08);color:#68756d
-    }
-    .quote{color:var(--green);font-size:34px;font-weight:700}
-    .stars{color:#d8a51d;margin-top:8px}
-
-    .whatsapp{
-      position:fixed;right:28px;bottom:28px;width:58px;height:58px;background:#13b83e;color:#fff;border-radius:50%;
-      display:grid;place-items:center;font-size:29px;text-decoration:none;box-shadow:0 5px 18px rgba(0,0,0,.25);z-index:60
-    }
-
-    footer{background:#00491d;color:#fff;padding:42px 8% 18px}
-    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.3fr 1.3fr;gap:35px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.18)}
-    footer h3,footer h4{margin-bottom:14px}
-    footer h3{font-family:"Playfair Display",serif;font-size:30px}
-    footer p,footer a{display:block;color:rgba(255,255,255,.83);text-decoration:none;font-size:13px;line-height:1.8}
-    .copy{display:flex;justify-content:space-between;font-size:12px;padding-top:18px;color:rgba(255,255,255,.75)}
-
-    @media(max-width:1000px){
-      header{padding:0 5%}
-      nav{display:none;position:absolute;top:82px;left:0;width:100%;background:#fff;padding:24px;flex-direction:column;box-shadow:0 8px 18px rgba(0,0,0,.12)}
-      nav.show{display:flex}
-      .menu{display:block}
-      .header-btn{display:none}
-      .hero{padding:55px 5%;min-height:520px;background-position:center right}
-      .hero h2{font-size:40px}
-      .hero h3{font-size:28px}
-      section{padding-left:5%;padding-right:5%}
-      .services-grid{grid-template-columns:repeat(2,1fr)}
-      .booking-box{grid-template-columns:1fr 1fr}
-      .benefits{grid-template-columns:repeat(2,1fr)}
-      .about{grid-template-columns:1fr}
-      .footer-grid{grid-template-columns:repeat(2,1fr)}
-    }
-
-    @media(max-width:620px){
-      header{height:72px}
-      .logo h1{font-size:25px}
-      .logo span{font-size:9px}
-      nav{top:72px}
-      .hero{
-        min-height:500px;padding-top:55px;background:
-        linear-gradient(90deg,rgba(4,35,14,.92),rgba(4,35,14,.50)),
-        url("https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1200&q=80");
-        background-size:cover;background-position:center
-      }
-      .hero h2{font-size:34px}
-      .hero h3{font-size:24px}
-      .hero p{font-size:14px}
-      .tag{font-size:12px}
-      .title h2{font-size:27px}
-      .title h2::before,.title h2::after{width:40px}
-      .services-grid,.booking-box,.benefits,.about-icons,.footer-grid{grid-template-columns:1fr}
-      .card img{height:170px}
-      .card-icon{top:145px}
-      .about img{height:230px}
-      .copy{flex-direction:column;gap:8px;text-align:center}
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -237,6 +68,7 @@
   </div>
 
   <div class="services-grid">
+
     <div class="card service relaxante">
       <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=900&q=80">
       <div class="card-icon">🌅</div>
@@ -244,7 +76,10 @@
         <h3>Massagem Por do Sol</h3>
         <p>Massagem com óleo aromático, pedras quentes e movimentos fluidos para dissolver tensões.</p>
       </div>
-      <div class="card-footer"><span>40/60 min</span><span>R$ 95 a 185</span></div>
+      <div class="card-footer">
+        <span>40/60 min</span>
+        <span>R$ 95 a 185</span>
+      </div>
     </div>
 
     <div class="card service relaxante">
@@ -254,7 +89,10 @@
         <h3>Massagem Shiatsu</h3>
         <p>Pressões em pontos de energia para equilibrar corpo e mente, liberando tensões profundas.</p>
       </div>
-      <div class="card-footer"><span>30/50 min</span><span>R$ 90 a 175</span></div>
+      <div class="card-footer">
+        <span>30/50 min</span>
+        <span>R$ 90 a 175</span>
+      </div>
     </div>
 
     <div class="card service relaxante">
@@ -264,7 +102,10 @@
         <h3>Relaxante com Cristais</h3>
         <p>Harmonização dos sete chakras com cristais, promovendo leveza e equilíbrio energético.</p>
       </div>
-      <div class="card-footer"><span>30/60 min</span><span>R$ 95 a 155</span></div>
+      <div class="card-footer">
+        <span>30/60 min</span>
+        <span>R$ 95 a 155</span>
+      </div>
     </div>
 
     <div class="card service relaxante">
@@ -274,7 +115,10 @@
         <h3>Reflexologia Podal</h3>
         <p>Pressões estratégicas nos pés para aliviar dores, fadiga e revitalizar o corpo.</p>
       </div>
-      <div class="card-footer"><span>20/40 min</span><span>R$ 85 a 99,99</span></div>
+      <div class="card-footer">
+        <span>20/40 min</span>
+        <span>R$ 85 a 99,99</span>
+      </div>
     </div>
 
     <div class="card service terapeutica">
@@ -284,7 +128,10 @@
         <h3>Massagem Terapêutica</h3>
         <p>Alívio profundo em áreas de desconforto com ventosas, termoterapia e eletroterapia quando necessário.</p>
       </div>
-      <div class="card-footer"><span>40/60 min</span><span>R$ 150 a 250</span></div>
+      <div class="card-footer">
+        <span>40/60 min</span>
+        <span>R$ 150 a 250</span>
+      </div>
     </div>
 
     <div class="card service terapeutica">
@@ -294,7 +141,10 @@
         <h3>Ventosaterapia</h3>
         <p>Estimula circulação, reduz dores musculares e promove equilíbrio físico e emocional.</p>
       </div>
-      <div class="card-footer"><span>40 min</span><span>R$ 120</span></div>
+      <div class="card-footer">
+        <span>40 min</span>
+        <span>R$ 120</span>
+      </div>
     </div>
 
     <div class="card service terapeutica">
@@ -304,7 +154,10 @@
         <h3>Liberação Miofascial</h3>
         <p>Atua nas fáscias, melhora mobilidade e alivia desconfortos musculares.</p>
       </div>
-      <div class="card-footer"><span>40/60 min</span><span>R$ 120 a 185</span></div>
+      <div class="card-footer">
+        <span>40/60 min</span>
+        <span>R$ 120 a 185</span>
+      </div>
     </div>
 
     <div class="card service energetica">
@@ -314,7 +167,10 @@
         <h3>Reikiterapia</h3>
         <p>Harmonização energética por imposição das mãos, promovendo equilíbrio e relaxamento.</p>
       </div>
-      <div class="card-footer"><span>40 min</span><span>R$ 120</span></div>
+      <div class="card-footer">
+        <span>40 min</span>
+        <span>R$ 120</span>
+      </div>
     </div>
 
     <div class="card service energetica">
@@ -324,7 +180,10 @@
         <h3>Alinhamento dos Chakras</h3>
         <p>Cristais para ativar e harmonizar os sete chakras, trazendo bem-estar integral.</p>
       </div>
-      <div class="card-footer"><span>20/40 min</span><span>R$ 120</span></div>
+      <div class="card-footer">
+        <span>20/40 min</span>
+        <span>R$ 120</span>
+      </div>
     </div>
 
     <div class="card service beleza">
@@ -334,7 +193,10 @@
         <h3>Drenagem Linfática</h3>
         <p>Reduz inchaços, elimina toxinas e promove sensação de leveza e equilíbrio corporal.</p>
       </div>
-      <div class="card-footer"><span>40/90 min</span><span>R$ 95 a 275</span></div>
+      <div class="card-footer">
+        <span>40/90 min</span>
+        <span>R$ 95 a 275</span>
+      </div>
     </div>
 
     <div class="card service beleza">
@@ -344,7 +206,10 @@
         <h3>Detox Facial</h3>
         <p>Tratamento com calda de morango para pele cansada, hidratação e luminosidade.</p>
       </div>
-      <div class="card-footer"><span>60/90 min</span><span>R$ 185</span></div>
+      <div class="card-footer">
+        <span>60/90 min</span>
+        <span>R$ 185</span>
+      </div>
     </div>
 
     <div class="card service beleza">
@@ -354,8 +219,12 @@
         <h3>Limpeza de Pele</h3>
         <p>Remove impurezas, células mortas e cravos, deixando a pele suave e revitalizada.</p>
       </div>
-      <div class="card-footer"><span>até 90 min</span><span>R$ 195</span></div>
+      <div class="card-footer">
+        <span>até 90 min</span>
+        <span>R$ 195</span>
+      </div>
     </div>
+
   </div>
 </section>
 
@@ -409,38 +278,22 @@
       <label>Horário</label>
       <select id="horario" required>
         <option value="">Selecione</option>
-        <option> 7 horas </option>
-        <option> 8 horas </option>
-        <option> 9 horas </option>
-        <option> 10 horas </option>
-        <option> 11 horas </option>
-        <option> 12 horas </option>
-        <option> 13 horas </option>
-        <option> 14 horas </option>
-        <option> 15 horas </option>
-        <option> 16 horas </option>
-        <option> 17 horas </option>
-        <option> 18 horas </option>
-        <option> 19 horas </option>
-        <option> 20 horas </option>
-        <option> 21 horas </option>
-        <option> 22 horas </option>
-        <option>Sábado - 9h</option>
-        <option>Sábado - 10h</option>
-        <option>Sábado - 11h</option>
-        <option>Sábado - 12h</option>
-        <option>Sábado - 13h</option>
-        <option>Sábado - 14h</option>
-        <option>Sábado - 15h</option>
-        <option>Sábado - 16h</option>
-        <option>Sábado - 17h</option>
-        <option>Sábado - 18h</option>
-        <option>Domingo - 7h</option>
-        <option>Domingo - 8h</option>
-        <option>Domingo - 9h</option>
-        <option>Domingo - 10h</option>
-        <option>Domingo - 11h</option>
-        <option>Domingo - 12h</option>
+        <option>7h</option>
+        <option>8h</option>
+        <option>9h</option>
+        <option>10h</option>
+        <option>11h</option>
+        <option>12h</option>
+        <option>13h</option>
+        <option>14h</option>
+        <option>15h</option>
+        <option>16h</option>
+        <option>17h</option>
+        <option>18h</option>
+        <option>19h</option>
+        <option>20h</option>
+        <option>21h</option>
+        <option>22h</option>
       </select>
     </div>
 
@@ -456,14 +309,41 @@
 </section>
 
 <section class="benefits" id="beneficios">
-  <div class="benefit"><div class="ico">☺</div><div><h3>Bem-estar Profundo</h3><p>Experiências pensadas para relaxamento, equilíbrio e cuidado integral.</p></div></div>
-  <div class="benefit"><div class="ico">🌿</div><div><h3>Terapias Naturais</h3><p>Óleos essenciais, cremes terapêuticos e técnicas personalizadas.</p></div></div>
-  <div class="benefit"><div class="ico">✨</div><div><h3>Energia em Equilíbrio</h3><p>Cuidado com corpo, mente e energia em uma só experiência.</p></div></div>
-  <div class="benefit"><div class="ico">🏨</div><div><h3>Localização Premium</h3><p>Dentro do Hotel Blue Tree, disponível para hóspedes e público externo.</p></div></div>
+  <div class="benefit">
+    <div class="ico">☺</div>
+    <div>
+      <h3>Bem-estar Profundo</h3>
+      <p>Experiências pensadas para relaxamento, equilíbrio e cuidado integral.</p>
+    </div>
+  </div>
+
+  <div class="benefit">
+    <div class="ico">🌿</div>
+    <div>
+      <h3>Terapias Naturais</h3>
+      <p>Óleos essenciais, cremes terapêuticos e técnicas personalizadas.</p>
+    </div>
+  </div>
+
+  <div class="benefit">
+    <div class="ico">✨</div>
+    <div>
+      <h3>Energia em Equilíbrio</h3>
+      <p>Cuidado com corpo, mente e energia em uma só experiência.</p>
+    </div>
+  </div>
+
+  <div class="benefit">
+    <div class="ico">🏨</div>
+    <div>
+      <h3>Localização Premium</h3>
+      <p>Dentro do Hotel Blue Tree, disponível para hóspedes e público externo.</p>
+    </div>
+  </div>
 </section>
 
 <section class="about" id="sobre">
-  <img src="sanvilale.jpg" alt="San Vitale no Hotel Blue Tree">
+  <img src="sanvitale.jpg" alt="San Vitale no Hotel Blue Tree">
 
   <div>
     <h2>Sobre a San Vitale</h2>
@@ -471,6 +351,7 @@
       Aqui, cada detalhe foi cuidadosamente pensado a partir de vivências reais, movimentos sentidos e dores superadas.
       A San Vitale nasceu para acolher o ser humano como ele realmente é: inteiro, complexo e em constante transformação.
     </p>
+
     <p>
       Acreditamos que cura é integração. Por isso, nossas terapias foram criadas para tocar corpo, mente e energia,
       despertando o equilíbrio entre todas as partes que compõem você.
@@ -502,6 +383,7 @@
           <th>Valor</th>
         </tr>
       </thead>
+
       <tbody>
         <tr><td>Relaxante</td><td>Massagem Por do Sol</td><td>40 / 60 min</td><td><strong>R$ 95 / R$ 185</strong></td></tr>
         <tr><td>Relaxante</td><td>Massagem Shiatsu</td><td>30 / 50 min</td><td><strong>R$ 90 / R$ 175</strong></td></tr>
@@ -595,40 +477,6 @@
   </div>
 </footer>
 
-<script>
-  function toggleMenu() {
-    document.getElementById("nav").classList.toggle("show");
-  }
-
-  function filterServices(category, button) {
-    const services = document.querySelectorAll(".service");
-    const buttons = document.querySelectorAll(".filter-area button");
-
-    buttons.forEach(btn => btn.classList.remove("active"));
-    button.classList.add("active");
-
-    services.forEach(service => {
-      if (category === "all" || service.classList.contains(category)) {
-        service.style.display = "block";
-      } else {
-        service.style.display = "none";
-      }
-    });
-  }
-
-  function agendarWhatsApp(event) {
-    event.preventDefault();
-
-    const nome = document.getElementById("nome").value;
-    const servico = document.getElementById("servico").value;
-    const data = document.getElementById("data").value;
-    const horario = document.getElementById("horario").value;
-
-    const mensagem = `Olá! Meu nome é ${nome}. Gostaria de agendar uma sessão na San Vitale.%0A%0AServiço: ${servico}%0AData: ${data}%0AHorário: ${horario}`;
-
-    window.open(`https://wa.me/5586998055995?text=${mensagem}`, "_blank");
-  }
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
